@@ -1,0 +1,10 @@
+@use 'reset';
+@use 'variables';
+
+body {
+  font-size: 14px;
+  font-family: var(--Gilroy__600);
+  color: var(--desport-primary-text);
+  background-color: var(--desport-bg-main);
+  height: 100%;
+}

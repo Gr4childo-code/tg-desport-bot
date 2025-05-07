@@ -1,0 +1,4 @@
+*:not(svg *, img, div) {
+  all: unset;
+  display: revert;
+}

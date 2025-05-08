@@ -1,4 +1,4 @@
-import Layout from '@/shared/components/Layout/Layout';
+import Layout from '@/shared/components/Core/Layout/Layout';
 import '@/shared/styles/globals.scss';
 
 export default function RootLayout({

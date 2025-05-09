@@ -19,29 +19,42 @@ const StyledCard = styled(CardContent)(({ theme }) => ({
   },
 }));
 
-const StyledName = styled(Typography)(({}) => ({
-  fontSize: '1',
+const StyledName = styled(Typography)({
+  fontSize: '1rem',
   fontFamily: 'Gilroy',
-}));
+});
 
-const TimerText = styled(Typography)(() => ({
+const TimerText = styled(Typography)(({ theme }) => ({
   fontSize: '0.9rem',
   marginLeft: 'auto',
   fontFamily: 'GilroyBold',
+  backgroundColor: theme.palette.desportMain.main,
+  borderRadius: '20px',
+  padding: '5px 10px',
 }));
 
 const User = ({ user }: UserProps) => {
-  const [timeLeft, setTimeLeft] = useState(Number(user.time_left) || 0);
+  const [timeLeft, setTimeLeft] = useState<number>(() => {
+    const time = Number(user.time_left);
+    return !isNaN(time) ? time : 0;
+  });
 
   useEffect(() => {
-    setTimeLeft(Number(user.time_left) || 0);
+    const time = Number(user.time_left);
+    setTimeLeft(!isNaN(time) ? time : 0);
   }, [user.time_left]);
 
   useEffect(() => {
-    if (!timeLeft || timeLeft <= 0) return;
+    if (timeLeft <= 0) return;
 
     const timer = setInterval(() => {
-      setTimeLeft((prev) => prev - 1);
+      setTimeLeft((prev) => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          return 0;
+        }
+        return prev - 1;
+      });
     }, 1000);
 
     return () => clearInterval(timer);
@@ -53,11 +66,12 @@ const User = ({ user }: UserProps) => {
       <StyledName>
         {user.first_name} {user.last_name}
       </StyledName>
-      <TimerText>{formatTime(timeLeft)}</TimerText>
 
-      {/* <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions> */}
+      <TimerText
+        sx={(theme) => ({ color: timeLeft > 0 ? theme.palette.background.default : theme.palette.desportThird.main })}
+      >
+        {timeLeft > 0 ? formatTime(timeLeft) : 'Работает'}
+      </TimerText>
     </StyledCard>
   );
 };

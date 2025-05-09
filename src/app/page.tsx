@@ -1,6 +1,13 @@
 'use client';
+
+import UserList from '@/shared/components/Users/UsersList/UsersList';
+
 const Page = () => {
-  return <div>fasfgfdsg</div>;
+  return (
+    <>
+      <UserList />
+    </>
+  );
 };
 
 export default Page;

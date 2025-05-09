@@ -6,7 +6,7 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 
 import Image from 'next/image';
-import { userProfile } from '@/mock/user.mock';
+import { userProfile } from '@/shared/components/Core/Header/lib/user.mock';
 import { styled } from '@mui/material';
 
 const StyledContainer = styled(Container)(({ theme }) => ({
@@ -29,7 +29,7 @@ const Header = () => {
     <StyledContainer>
       <StyledToolBar disableGutters>
         <Image src="logo.svg" width={65} height={58} alt="logo" priority />
-        <Avatar alt="Avatar profile" src={userProfile.avatar} />
+        <Avatar alt="Avatar profile" src={userProfile.photo_url} />
       </StyledToolBar>
     </StyledContainer>
   );

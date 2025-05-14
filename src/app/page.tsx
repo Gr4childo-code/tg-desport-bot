@@ -1,6 +1,6 @@
 'use client';
 
-import UserList from '@/shared/components/Users/UsersList/UsersList';
+import UserList from '@/shared/components/Users/User/components/UsersList/UsersList';
 
 const Page = () => {
   return (

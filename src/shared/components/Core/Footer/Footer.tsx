@@ -1,51 +1,48 @@
 'use client';
 
-import { BottomNavigation, BottomNavigationAction, Paper, styled } from '@mui/material';
-import { useState } from 'react';
-import LocalGroceryStoreOutlinedIcon from '@mui/icons-material/LocalGroceryStoreOutlined';
-import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
+import Image from 'next/image';
+import { Paper, Box, styled } from '@mui/material';
+import ModalTime from '@shared/components/ModalTime/ModalTime';
 
 const StyledPaper = styled(Paper)(() => ({
   backgroundColor: 'transparent',
-  boxShadow: 'none',
   position: 'fixed',
   bottom: 10,
   left: 0,
   right: 0,
   padding: '10px',
+  display: 'flex',
+  boxShadow: 'none',
+  zIndex: 1401,
 }));
 
-const StyledBottomNavigation = styled(BottomNavigation)(({ theme }) => ({
-  borderRadius: '20px',
+const StyledBoxContainer = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '16px',
+  backgroundColor: theme.palette.background.default,
+  padding: '10px',
   boxShadow: theme.shadows[2],
+  borderRadius: '20px',
 }));
-const StyledBottomNavigationAction = styled(BottomNavigationAction)(({ theme }) => ({
-  '& .MuiBottomNavigationAction-label': {
-    fontFamily: 'Gilroy',
-    '&.Mui-selected ': {
-      color: theme.palette.desportMain.main,
-    },
-  },
-  '&.Mui-selected ': {
-    color: theme.palette.desportMain.main,
-  },
-}));
+
+const StyledInnerBox = styled(Box)({
+  display: 'flex',
+  alignItems: 'center',
+  gap: 8,
+  width: '100%',
+  maxHeight: '77px',
+});
 
 const Footer = () => {
-  const [value, setValue] = useState(0);
-
   return (
     <StyledPaper>
-      <StyledBottomNavigation
-        showLabels
-        value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue);
-        }}
-      >
-        <StyledBottomNavigationAction label="Расписание" icon={<CalendarTodayOutlinedIcon />} />
-        <StyledBottomNavigationAction label="Заказы" icon={<LocalGroceryStoreOutlinedIcon />} />
-      </StyledBottomNavigation>
+      <StyledInnerBox>
+        <StyledBoxContainer>
+          <Image src="/logo.svg" width={65} height={56} alt="logo" priority />
+        </StyledBoxContainer>
+        <ModalTime />
+      </StyledInnerBox>
     </StyledPaper>
   );
 };

@@ -13,7 +13,13 @@ export const muiTheme = createTheme({
       primary: '#242323',
       secondary: '#b2b2b2;',
     },
-
+    error: {
+      main: '#fb471f',
+    },
+    common: {
+      black: '#000',
+      white: '#fff',
+    },
     desportMain: {
       main: '#0053da',
       light: '#3379ff',
@@ -37,7 +43,7 @@ export const muiTheme = createTheme({
   },
   shadows: {
     ...createTheme().shadows,
-    2: '0 10px 46px 0 rgba(0, 0, 0, 0.051)',
+    2: '0px 9px 35px 0px rgba(0, 0, 0, 0.05)',
   },
 
   transitions: {

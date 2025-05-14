@@ -19,7 +19,7 @@ export const ModelUserList: TUsers = [
     username: 'janedoe',
     is_premium: true,
     photo_url: 'https://example.com/photo.jpg',
-    time_left: '900',
+    time_left: '30',
   },
   {
     id: 3,
@@ -29,6 +29,6 @@ export const ModelUserList: TUsers = [
     username: 'bobsmith',
     is_premium: false,
     photo_url: 'https://example.com/photo.jpg',
-    time_left: '3600',
+    time_left: '90',
   },
 ];

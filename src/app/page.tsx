@@ -1,8 +1,7 @@
 import UserListWrapper from '@/shared/components/Users/ui/components/UsersWrapper/UsersWrapper';
 
 const Page = async () => {
-  const { userProfile } = await import('@/shared/lib/user.mock');
-
+  const userProfile = null;
   return <UserListWrapper user={userProfile} />;
 };
 

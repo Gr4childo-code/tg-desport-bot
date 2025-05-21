@@ -9,4 +9,4 @@ export type TUser = {
   is_premium: boolean;
   photo_url: string;
   time_left?: string;
-};
+} | null;

@@ -1,9 +1,10 @@
 'use client';
 
-import React, { FC, memo } from 'react';
+import React, { FC } from 'react';
 import { Avatar, CardContent, styled, Typography, Box } from '@mui/material';
+import { observer } from 'mobx-react-lite';
 
-import { TUser } from '../../types/user';
+import { TUser } from '../types/user';
 import UserTimer from './UserTimer/UserTimer';
 
 const StyledCard = styled(CardContent)(({ theme }) => ({
@@ -44,7 +45,13 @@ const StyledAvatar = styled(Avatar)(({ theme }) => ({
 type Props = {
   user: TUser;
 };
-const User: FC<Props> = memo(({ user }) => {
+const User: FC<Props> = observer(({ user }) => {
+  console.log(user);
+
+  if (!user) {
+    return null;
+  }
+
   const parsedTime = Number(user.time_left);
   const validTime = !isNaN(parsedTime) ? parsedTime : 0;
 
@@ -72,4 +79,4 @@ const User: FC<Props> = memo(({ user }) => {
   );
 });
 
-export default memo(User);
+export default User;

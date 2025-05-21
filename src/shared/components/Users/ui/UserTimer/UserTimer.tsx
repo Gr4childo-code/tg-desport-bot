@@ -13,13 +13,19 @@ const ProgressBarContainer = styled(Box)(({ theme }) => ({
   transform: 'translateX(4px)',
 }));
 
-const ProgressBarFill = styled(Box)<{ progress: number; color: string }>(({ progress, color }) => ({
-  width: `${progress}%`,
-  height: '100%',
-  backgroundColor: color,
-  transition: 'width 0.3s ease',
-  transformOrigin: 'right center',
-}));
+const ProgressBarFill = ({ progress, color }: { progress: number; color: string }) => {
+  return (
+    <Box
+      style={{
+        height: '100%',
+        backgroundColor: color,
+        width: `${progress}%`,
+        transition: 'width 0.3s ease',
+        transformOrigin: 'right center',
+      }}
+    />
+  );
+};
 
 const TimerText = styled(Typography)(() => ({
   fontSize: '0.8rem',

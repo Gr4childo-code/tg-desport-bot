@@ -1,13 +1,9 @@
-'use client';
+import UserListWrapper from '@/shared/components/Users/ui/components/UsersWrapper/UsersWrapper';
 
-import UserList from '@/shared/components/Users/User/components/UsersList/UsersList';
+const Page = async () => {
+  const { userProfile } = await import('@/shared/lib/user.mock');
 
-const Page = () => {
-  return (
-    <>
-      <UserList />
-    </>
-  );
+  return <UserListWrapper user={userProfile} />;
 };
 
 export default Page;

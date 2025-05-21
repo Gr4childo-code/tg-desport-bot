@@ -9,16 +9,18 @@ type Props = {
   user: TUser;
   users?: TUser[];
 };
-const UserListWrapper = ({ user }: Props) => {
+const UserListWrapper = ({ user, users }: Props) => {
   const { userStore } = useStore();
 
   useEffect(() => {
-    console.log('user1', user);
-
-    if (user?.id) {
+    if (user) {
       userStore.setUser(user);
     }
-  }, [user, userStore]);
+
+    if (users && users.length > 0) {
+      userStore.setUsersList(users);
+    }
+  }, [user, users, userStore]);
 
   return <UsersList />;
 };

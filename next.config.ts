@@ -1,7 +1,10 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  env: {
+    NEXT_CUSTOMER_URL: process.env.NEXT_CUSTOMER_URL,
+    NEXT_CUSTOMER_DEVELOPMENT_URL: process.env.NEXT_CUSTOMER_DEVELOPMENT_URL,
+  },
 };
 
 export default nextConfig;

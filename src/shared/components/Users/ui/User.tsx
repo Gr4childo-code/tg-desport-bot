@@ -46,12 +46,6 @@ type Props = {
   user: TUser;
 };
 const User: FC<Props> = observer(({ user }) => {
-  console.log(user);
-
-  if (!user) {
-    return null;
-  }
-
   const parsedTime = Number(user.time_left);
   const validTime = !isNaN(parsedTime) ? parsedTime : 0;
 

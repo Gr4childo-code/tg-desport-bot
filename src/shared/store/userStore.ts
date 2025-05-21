@@ -1,21 +1,26 @@
 import { makeAutoObservable } from 'mobx';
+
+import { IInitialUserStore } from './types/storeUser';
 import { TUser } from '../components/Users/types/user';
 
-const initialUser = {
+const initialUser: IInitialUserStore = {
   user: null,
+  usersList: null,
 };
 
 class UserStore {
-  user: TUser = initialUser.user;
+  user = initialUser.user;
+  usersList = initialUser.usersList;
 
   constructor() {
     makeAutoObservable(this);
   }
   setUser = (userData: TUser) => {
     this.user = userData;
-    console.log(this.user);
   };
-
+  setUsersList = (userData: TUser[]) => {
+    this.usersList = userData;
+  };
   setUserBreak = (timerLeft: string) => {
     if (this.user !== null) {
       this.user = {

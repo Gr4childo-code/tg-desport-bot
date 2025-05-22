@@ -1,4 +1,4 @@
-import { makeAutoObservable } from 'mobx';
+import { makeAutoObservable, extendObservable } from 'mobx';
 
 import { IInitialUserStore } from './types/storeUser';
 import { TUser } from '../components/Users/types/user';
@@ -16,7 +16,7 @@ class UserStore {
     makeAutoObservable(this);
   }
   setUser = (userData: TUser) => {
-    this.user = userData;
+    this.user = extendObservable({}, userData); // делаем объект реактивным
   };
   setUsersList = (userData: TUser[]) => {
     this.usersList = userData;

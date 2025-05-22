@@ -57,6 +57,10 @@ const UserTimer: FC<{ initialTime: number }> = ({ initialTime }) => {
     return () => clearInterval(timer);
   }, [timeLeft]);
 
+  useEffect(() => {
+    setTimeLeft(initialTime);
+  }, [initialTime]);
+
   const progress = useMemo(() => {
     return initialTime > 0 ? ((initialTime - timeLeft) / initialTime) * 100 : 100;
   }, [timeLeft, initialTime]);

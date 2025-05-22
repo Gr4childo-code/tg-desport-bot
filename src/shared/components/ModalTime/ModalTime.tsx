@@ -14,6 +14,7 @@ import {
 import React from 'react';
 import { ModelTime } from './lib/time.mock';
 import { CheckedCheckboxIcon, UncheckedCheckboxIcon } from '@/shared/Icons/CustomCheckbox';
+import { useStore } from '@/shared/providers/StoreProvider';
 
 const StyledButton = styled(({ $hasOpen, ...props }: { $hasOpen?: boolean }) => <Button {...props} />)(
   ({ theme, $hasOpen }) => ({
@@ -27,6 +28,9 @@ const StyledButton = styled(({ $hasOpen, ...props }: { $hasOpen?: boolean }) => 
     fontSize: '1.2rem',
     height: '100%',
     maxHeight: '56px',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '0.875rem',
+    },
   })
 );
 
@@ -70,15 +74,24 @@ const StyledFormControlLabel = styled(FormControlLabel)(({ theme }) => ({
 }));
 
 const ModalTime = () => {
+  const { userStore } = useStore();
+  const { user, setUserBreak } = userStore;
+
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState('female');
+  const [value, setValue] = React.useState<string | null>(null);
 
   const handleModal = () => {
+    if (open) {
+      if (value) {
+        setUserBreak(value);
+      }
+    }
     setOpen((prev) => !prev);
+    setValue(null);
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue((event.target as HTMLInputElement).value);
+    setValue(event.target.value);
   };
 
   return (
@@ -87,12 +100,12 @@ const ModalTime = () => {
         {!open ? 'Создать перерыв' : 'Закрыть'}
       </StyledButton>
 
-      <StyledDialog open={open}>
+      <StyledDialog open={open} aria-labelledby="modal-title" role="dialog">
         <StyledDialogContent>
           <StyledDialogTitle>Мой перерыв</StyledDialogTitle>
 
           <FormControl>
-            <RadioGroup value={value} onChange={handleChange}>
+            <RadioGroup value={value || ''} onChange={handleChange}>
               {ModelTime.map((item) => (
                 <StyledFormControlLabel
                   key={item.label}

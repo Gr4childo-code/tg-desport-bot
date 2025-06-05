@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { Paper, Box, styled } from '@mui/material';
+import { Paper, Box, styled, Container } from '@mui/material';
 import ModalTime from '@shared/components/ModalTime/ModalTime';
 
 const StyledPaper = styled(Paper)(() => ({
@@ -14,6 +14,12 @@ const StyledPaper = styled(Paper)(() => ({
   display: 'flex',
   boxShadow: 'none',
   zIndex: 1401,
+}));
+
+const StyledContainer = styled(Container)(({ theme }) => ({
+  [theme.breakpoints.up('sm')]: {
+    padding: 0,
+  },
 }));
 
 const StyledBoxContainer = styled(Box)(({ theme }) => ({
@@ -37,12 +43,14 @@ const StyledInnerBox = styled(Box)({
 const Footer = () => {
   return (
     <StyledPaper>
-      <StyledInnerBox>
-        <StyledBoxContainer>
-          <Image src="/logo.svg" width={65} height={56} alt="logo" priority />
-        </StyledBoxContainer>
-        <ModalTime />
-      </StyledInnerBox>
+      <StyledContainer>
+        <StyledInnerBox>
+          <StyledBoxContainer>
+            <Image src="/logo.svg" width={65} height={56} alt="logo" priority />
+          </StyledBoxContainer>
+          <ModalTime />
+        </StyledInnerBox>
+      </StyledContainer>
     </StyledPaper>
   );
 };

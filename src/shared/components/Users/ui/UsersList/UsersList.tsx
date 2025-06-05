@@ -1,6 +1,6 @@
 'use client';
 
-import React, { memo } from 'react';
+import React from 'react';
 import { Container, styled } from '@mui/material';
 
 import User from '../User';
@@ -47,4 +47,4 @@ const MemoUsersList = observer(({ usersList }: { usersList: TUser[] }) => (
   </>
 ));
 
-export default memo(UsersList);
+export default UsersList;

@@ -8,5 +8,5 @@ export type TUser = {
   username: string;
   is_premium: boolean;
   photo_url: string;
-  time_left?: string;
+  timeLeft?: string;
 };

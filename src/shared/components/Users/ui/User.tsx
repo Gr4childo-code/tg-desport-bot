@@ -5,17 +5,20 @@ import { Avatar, CardContent, styled, Typography, Box } from '@mui/material';
 import { observer } from 'mobx-react-lite';
 
 import { TUser } from '../types/user';
-import UserTimer from './UserTimer/UserTimer';
+
+import { useUserTimer } from '../hook/useUserTimer';
+import UserTimer from './components/UserTimer/UserTimer';
 
 const StyledCard = styled(CardContent)(({ theme }) => ({
-  position: 'relative',
   display: 'flex',
-  alignItems: 'center',
+  flexDirection: 'column',
   gap: '1rem',
   padding: '11px',
   borderRadius: '14px',
   backgroundColor: theme.palette.background.paper,
   boxShadow: theme.shadows[2],
+  position: 'relative',
+
   '&:last-child': {
     paddingBottom: '10px',
   },
@@ -45,8 +48,9 @@ const StyledAvatar = styled(Avatar)(({ theme }) => ({
 type Props = {
   user: TUser;
 };
+
 const User: FC<Props> = observer(({ user }) => {
-  const parsedTime = Number(user.time_left);
+  const parsedTime = Number(user.timeLeft);
   const validTime = !isNaN(parsedTime) ? parsedTime : 0;
 
   return (
@@ -65,7 +69,6 @@ const User: FC<Props> = observer(({ user }) => {
           <StyledName>
             {user.first_name} {user.last_name}
           </StyledName>
-
           <UserTimer initialTime={validTime} />
         </Box>
       </Box>

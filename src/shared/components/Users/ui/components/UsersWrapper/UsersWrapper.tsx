@@ -2,19 +2,23 @@
 
 import { useStore } from '@/shared/providers/StoreProvider';
 import { useEffect } from 'react';
-import UsersList from '@/shared/components/Users/ui/UsersList/UsersList';
+import UsersList from '@/shared/components/Users/ui/components/UsersList/UsersList';
 import { TUser } from '@/shared/components/Users/types/user';
+import { useTelegram } from '@/shared/providers/TelegramProvider';
 
 type Props = {
-  user: TUser;
+  currentUser: TUser;
   users?: TUser[];
 };
-const UserListWrapper = ({ user, users }: Props) => {
+const UserListWrapper = ({ currentUser, users }: Props) => {
   const { userStore } = useStore();
+  const { user } = useTelegram();
 
   useEffect(() => {
     if (user) {
       userStore.setUser(user);
+    } else {
+      userStore.setUser(currentUser);
     }
 
     if (users && users.length > 0) {

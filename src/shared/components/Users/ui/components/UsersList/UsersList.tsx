@@ -3,13 +3,13 @@
 import React from 'react';
 import { Container, styled } from '@mui/material';
 
-import User from '../User';
-import Title from '../../../Core/Title/Title';
+import User from '../../User';
+import Title from '../../../../Core/Title/Title';
 import { useStore } from '@/shared/providers/StoreProvider';
 import { observer } from 'mobx-react-lite';
-import { TUser } from '../../types/user';
-import UserSkeleton from '../components/Skeleton/UserSkeleton';
-import UserListSkeleton from '../components/Skeleton/UserListSkeleton';
+import { TUser } from '../../../types/user';
+import UserSkeleton from '../Skeleton/UserSkeleton';
+import UserListSkeleton from '../Skeleton/UserListSkeleton';
 const StyledContainer = styled(Container)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',

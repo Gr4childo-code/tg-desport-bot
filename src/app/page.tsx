@@ -1,5 +1,6 @@
 import { getUserProfile, getUsersList } from '@/shared/components/Users/api';
 import UserListWrapper from '@/shared/components/Users/ui/components/UsersWrapper/UsersWrapper';
+
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
 const Page = async () => {
   const userProfile = await getUserProfile();
   const usersList = await getUsersList();
-  return <UserListWrapper user={userProfile} users={usersList} />;
+  return <UserListWrapper currentUser={userProfile} users={usersList} />;
 };
 
 export default Page;

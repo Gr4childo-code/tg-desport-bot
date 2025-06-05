@@ -16,7 +16,7 @@ class UserStore {
     makeAutoObservable(this);
   }
   setUser = (userData: TUser) => {
-    this.user = extendObservable({}, userData); // делаем объект реактивным
+    this.user = extendObservable({}, userData);
   };
   setUsersList = (userData: TUser[]) => {
     this.usersList = userData;
@@ -25,7 +25,7 @@ class UserStore {
     if (this.user !== null) {
       this.user = {
         ...this.user,
-        time_left: timerLeft,
+        timeLeft: timerLeft,
       };
     }
   };

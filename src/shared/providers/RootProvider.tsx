@@ -4,17 +4,20 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 import { muiTheme } from '../config/theme';
 import { GlobalFontStyles } from './GlobalFontStyles';
 import { StoreProvider } from './StoreProvider';
+import { TelegramProvider } from './TelegramProvider';
 
 const RootProvider = ({ children }: PropsWithChildren) => {
   return (
     <StoreProvider>
-      <AppRouterCacheProvider>
-        <ThemeProvider theme={muiTheme}>
-          <CssBaseline />
-          <GlobalFontStyles />
-          {children}
-        </ThemeProvider>
-      </AppRouterCacheProvider>
+      <TelegramProvider>
+        <AppRouterCacheProvider>
+          <ThemeProvider theme={muiTheme}>
+            <CssBaseline />
+            <GlobalFontStyles />
+            {children}
+          </ThemeProvider>
+        </AppRouterCacheProvider>
+      </TelegramProvider>
     </StoreProvider>
   );
 };

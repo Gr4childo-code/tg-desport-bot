@@ -7,7 +7,7 @@
     "username": "Gr4childo",
     "is_premium": true,
     "photo_url": "https://example.com/photo.jpg ",
-    "time_left": "0"
+    "timeLeft": "0"
   },
   "userList": [
     {
@@ -18,7 +18,7 @@
       "username": "janedoe",
       "is_premium": true,
       "photo_url": "https://example.com/photo.jpg ",
-      "time_left": "30"
+      "timeLeft": "30"
     },
     {
       "id": 3,
@@ -28,7 +28,7 @@
       "username": "bobsmith",
       "is_premium": false,
       "photo_url": "https://example.com/photo.jpg ",
-      "time_left": "90"
+      "timeLeft": "90"
     }
   ]
 }
